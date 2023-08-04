@@ -11,8 +11,24 @@
     --text-color: #fff;
     --stroke-color: rgba(255, 255, 255, 0.5);
     --surface-color: rgba(255, 255, 255, 0.1);
+    --surface-color-hover: rgba (255, 255, 255, 0.5);
+    --switch-bg-url: url(../img/MoonStars.svg);
+    --highlight-color: rgba(255, 255, 255, 0.2) 
 
 }
+
+.light {
+    --bg-url: url(../img/bg-desktop-light.jpg);
+    --text-color: #000;
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.1);
+    --surface-color-hover: rgba (0, 0, 0, 0.5);
+    --switch-bg-url: url(../img/Sun.svg);
+    --highlight-color: rgba(0, 0, 0, 0.2);
+
+}
+
+
 
 /* Modificações do body */
 
@@ -53,8 +69,46 @@ body {
  line-height: 24px;
 }
 
+/* switch button */
+#switch{
+    position: relative;
+    width: 64px;
+    margin: 4px auto;
+}
 
+#switch button{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 0;
+    background: #fff var(--switch-bg-url) no-repeat center;
 
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+
+    animation: slide-out 0.2s;
+}
+#switch button:hover{
+    outline: 8px solid var(--highlight-color);
+}
+
+.light #switch button{
+    animation: slide-in 0.2s forwards
+}
+
+#switch span{
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+
+}
 
 /* links */
 #links ul{
@@ -74,9 +128,17 @@ body {
     border: 1px solid var(--stroke-color);
     border-radius: 8px;
     background: var(--surface-color);
+
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
   
     text-decoration: none;
     font-weight: bold; 
+}
+/* pseudo-selector */
+#links ul li a:hover{
+    background: var(--surface-color-hover);
+    border: 1px solid var(--text-color);
 }
 
 /* Modificações  nos links da redes sociais */
@@ -103,4 +165,23 @@ body {
 
 #footer a{
     text-decoration: none;
+}
+
+/* animações */
+@keyframes slide-in {
+    from{
+        left: 0;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+@keyframes slide-out {
+    from{
+        left: 50%;
+    }
+    to {
+        left: 0;
+    }
 }
